@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "ccslakey", password: "secret", except: [:index, :show]
+  before_action :require_user, only: [:index, :show]
 
   def index
     @articles = Article.all
