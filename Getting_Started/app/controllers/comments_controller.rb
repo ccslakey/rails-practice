@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
-  http_basic_authenticate_with name: "ccslakey", password: "secret", only: :destroy
-
+  # http_basic_authenticate_with name: "ccslakey", password: "secret", only: :destroy
+  # before_action :require_user, only: [:index, :show]
+  # exceptions for commenting/deleting based on user status/matching
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
